@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario: The Daily Glitch</title>
+    <link rel="stylesheet" href="../css/page_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .news-container { background: #eee; color: #111; padding: 20px; font-family: 'Georgia', serif; border-radius: 4px; }
+        .news-header { border-bottom: 3px double #000; margin-bottom: 20px; padding-bottom: 10px; text-align: center; }
+        .news-wrapper { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .main-article h1 { font-family: 'Arial', sans-serif; font-size: 3em; margin: 0 0 10px 0; color: #000; text-shadow: none; }
+        .main-article img { width: 100%; height: 300px; object-fit: cover; background: #333; margin-bottom: 10px; }
+        .sidebar-article { border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 10px; }
+        .sidebar-article h3 { margin: 0 0 5px 0; color: #cc0000; font-family: 'Arial', sans-serif; }
+        .ad-banner { background: #ddd; height: 100px; display: flex; align-items: center; justify-content: center; margin: 20px 0; font-weight: bold; color: #555; border: 1px dashed #999; }
+        p { line-height: 1.6; margin-bottom: 15px; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>SCENARIO: <span style="color:var(--primary)">NEWS PORTAL</span></h2>
+                <button id="manual-start-btn" class="cta-button" style="padding:10px 20px; font-size:12px;">ENABLE SIMULATION</button>
+            </div>
+            <a href="scenario_hub.html" style="color:#666; font-size:12px;">&larr; BACK TO MISSION SELECT</a>
+        </header>
+
+        <div class="news-container">
+            <header class="news-header">
+                <h1 style="color:#111; font-family: 'Times New Roman', serif; text-shadow: none;">THE DAILY GLITCH</h1>
+                <p style="margin:0; font-style:italic;">"All the news that's fit to delete."</p>
+                <nav style="margin-top:10px; border-top:1px solid #000; padding-top:5px;">
+                    <a href="#" style="color:#000; margin:0 10px;">World</a>
+                    <a href="#" style="color:#000; margin:0 10px;">Tech</a>
+                    <a href="#" style="color:#000; margin:0 10px;">Politics</a>
+                    <a href="#" style="color:#000; margin:0 10px;">Opinion</a>
+                </nav>
+            </header>
+
+            <div class="news-wrapper">
+                <article class="main-article">
+                    <h1>AI TAKES OVER THE INTERNET?</h1>
+                    <img src="https://via.placeholder.com/600x300/111/fff?text=NEWS_LEAD_IMAGE" alt="Breaking News">
+                    <p><strong>CITY CENTER -</strong> Reports indicate that artificial intelligence is now generating more content than humans can consume. Authorities urge citizens to remain calm and verify their sources.</p>
+                    <p>In a related story, cat videos are still the number one driver of internet traffic, despite the technological singularity approaching rapid speeds. "I just like the funny meows," said one local resident.</p>
+                    <p>Experts warn that clicking random buttons might lead to unexpected joy. The cyber-police have been dispatched to monitor the situation.</p>
+                    
+                    <div class="ad-banner wb-enemy">
+                        [ADVERTISEMENT: BUY MORE RAM TODAY]
+                    </div>
+
+                    <h2>Economics in Shambles</h2>
+                    <p>The stock market took a dip today after a pigeon flew into the main server room. "It was a calculated attack," claims the CTO.</p>
+                </article>
+
+                <aside>
+                    <div class="sidebar-article">
+                        <h3>Stock Market Crash</h3>
+                        <p>Prices plummet as users delete buy buttons.</p>
+                    </div>
+                    <div class="sidebar-article">
+                        <h3>Weather Update</h3>
+                        <p>Cloudy with a chance of server errors.</p>
+                    </div>
+                    <div class="sidebar-article">
+                        <h3>Opinion: Why H1 Tags Are Overrated</h3>
+                        <p>A controversial take on semantic HTML structure.</p>
+                    </div>
+                    <img src="https://via.placeholder.com/300x250/222/eee?text=SIDEBAR_AD" style="width:100%; height:auto;">
+                    <div class="sidebar-article">
+                        <h3>Top 10 Glitches</h3>
+                        <p>Number 4 will surprise you!</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulation Dependencies -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+</body>
+</html>

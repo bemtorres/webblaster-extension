@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario: Data Center</title>
+    <link rel="stylesheet" href="../css/page_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .data-grid-container {
+            margin-top: 30px;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #ccc;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background: #333;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+        
+        tr:hover td {
+            background: rgba(248, 197, 30, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>SCENARIO: <span style="color:var(--primary)">DATA SERVER</span></h2>
+                <button id="manual-start-btn" class="cta-button" style="padding:10px 20px; font-size:12px;">ENABLE SIMULATION</button>
+            </div>
+            <a href="scenario_hub.html" style="color:#666; font-size:12px;">&larr; BACK TO MISSION SELECT</a>
+        </header>
+
+        <div style="background: rgba(0,0,0,0.5); padding: 15px; border-left: 4px solid var(--secondary); margin-bottom: 20px;">
+            <strong>OBJECTIVE:</strong> Purge corrupted data tables. <br>
+            <span style="color:var(--primary)">TIP: Hold SHIFT + CLICK on a cell to destroy the entire row or table!</span>
+        </div>
+
+        <div class="data-grid-container">
+            <h3>SERVER_LOG_01</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>TIMESTAMP</th>
+                        <th>ERROR_CODE</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>001</td><td>2026-02-01 09:00:00</td><td>ERR_NULL_REF</td><td>CRITICAL</td></tr>
+                    <tr><td>002</td><td>2026-02-01 09:01:23</td><td>ERR_OVERFLOW</td><td>WARNING</td></tr>
+                    <tr><td>003</td><td>2026-02-01 09:05:11</td><td>Success</td><td>OK</td></tr>
+                    <tr><td>004</td><td>2026-02-01 09:12:45</td><td>ERR_TIMEOUT</td><td>RETRY</td></tr>
+                </tbody>
+            </table>
+
+            <h3>USER_DATABASE [ENCRYPTED]</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>USER</th>
+                        <th>ACCESS_LEVEL</th>
+                        <th>LAST_LOGIN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Admin</td><td>Tier 1</td><td>Today</td></tr>
+                    <tr><td>Guest</td><td>Tier 3</td><td>Yesterday</td></tr>
+                    <tr><td>System</td><td>Root</td><td>Always</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Simulation Dependencies -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+</body>
+</html>

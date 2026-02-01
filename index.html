@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBBLASTER - Home Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/page_styles.css">
+    <style>
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
+            border: 2px solid #333;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+        }
+
+        .glitch-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                transparent 2px,
+                rgba(0,0,0,0.5) 3px
+            );
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.3;
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(248, 197, 30, 0.3);
+            animation: scan 3s linear infinite;
+            z-index: 5;
+            box-shadow: 0 0 10px rgba(248, 197, 30, 0.8);
+        }
+
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 84px);
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0 var(--secondary);
+            letter-spacing: -2px;
+        }
+        
+        .hero-desc {
+            font-size: clamp(16px, 2vw, 24px);
+            color: #aaa;
+            max-width: 700px;
+            margin: 30px auto 50px;
+            line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 20px 40px;
+            font-family: 'Press Start 2P', cursive;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 0 100%);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(248, 197, 30, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(248, 197, 30, 0.3);
+        }
+
+        .feature-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary);
+            color: #000;
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 20s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+            <div style="font-family: 'Press Start 2P'; color: #fff;">WB_V1.0</div>
+            <div>
+                <span class="status-dot active"></span> SYSTEM ONLINE
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="scanline"></div>
+            <div class="glitch-wrapper">
+                <h1>WEB<span style="color:var(--primary)">BLASTER</span></h1>
+            </div>
+            
+            <p class="hero-desc">
+                The ultimate browser extension that turns every webpage into a destructible playground. 
+                <br><br>
+                <span style="color:var(--secondary)">DELETE. SCORE. DOMINATE.</span>
+            </p>
+
+            <div class="game-info" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; margin-bottom:40px; text-align:left; max-width:800px; background:rgba(0,0,0,0.8); padding:30px; border:1px solid #444; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+                <div>
+                    <h3 style="color:var(--primary); margin-top:0; font-family:'Press Start 2P'; font-size:16px;">👾 MISSION</h3>
+                    <p style="color:#aaa; line-height:1.6; font-size:16px;">
+                        Turn the boring web into an arcade battle zone. Eliminate HTML elements to score points, find hidden bosses, and unlock new ranks.
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color:var(--secondary); margin-top:0; font-family:'Press Start 2P'; font-size:16px;">🕹️ CONTROLS</h3>
+                    <ul style="padding-left:20px; margin:0; color:#ddd; line-height:1.8; font-size:15px;">
+                        <li><strong>[L-CLICK]</strong> :: Destroy Target</li>
+                        <li><strong>[SHIFT]+[CLICK]</strong> :: Nuke Structure</li>
+                        <li><strong>[BOSS]</strong> :: Rapid Fire to Kill</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <a href="scenarios/scenario_hub.html" class="cta-button">SELECT MISSION</a>
+                <a href="welcome.html" class="secondary-btn">DOCS</a>
+            </div>
+        </section>
+    </div>
+
+    <div class="feature-ticker">
+        <div class="ticker-content">
+            LATEST UPDATE: COMBO SYSTEM ONLINE /// HEADERS WORTH 1000XP /// IMAGES WORTH 1500XP /// CLICK TO DESTROY /// CLICK TO DESTROY ///
+        </div>
+    </div>
+</body>
+</html>

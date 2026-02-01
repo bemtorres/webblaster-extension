@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBBLASTER - Training Dojo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/page_styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TRAINING <span style="color:var(--secondary)">DOJO</span></h1>
+            <div class="subtitle">Simulation Environment</div>
+        </header>
+
+        <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 8px; border-left: 5px solid var(--primary); text-align: left; margin-bottom: 40px;">
+            <strong style="color:var(--primary); font-size: 1.2em;">MISSION BRIEFING:</strong><br><br>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    1. Use the Chrome Extension Popup to Start.<br>
+                    2. OR click this button to simulate the HUD right here:
+                </div>
+                <button id="manual-start-btn" class="cta-button" style="margin:0; font-size:12px; padding:15px 20px;">
+                    ENABLE SIMULATION MODE
+                </button>
+            </div>
+        </div>
+
+        <script src="../js/standalone_game.js"></script>
+        <script src="../js/training_ui.js"></script>
+
+        <div class="training-area">
+            
+            <!-- Headers Section -->
+            <div class="dummy-group">
+                <h2>CLASS A THREATS: HEADERS</h2>
+                <div class="target-wrapper">
+                    <h1>BIG BOSS (H1)</h1>
+                    <h2>Mini Boss (H2)</h2>
+                    <h3>Lieutenant (H3)</h3>
+                </div>
+            </div>
+
+            <!-- Media Section -->
+            <div class="dummy-group">
+                <h2>VISUAL TARGETS (High Value)</h2>
+                <div class="target-wrapper">
+                    <img src="../images/webblaster_400.gif" class="dummy-img" alt="Target 1">
+                    <img src="../images/webblaster_400.gif" class="dummy-img" alt="Target 2">
+                    <div class="dummy-box wb-enemy" style="width: 200px; height: 150px; border-color: var(--secondary);">
+                        [VIDEO_SIMULATION]
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text & Interactive -->
+            <div class="dummy-group">
+                <h2>INFANTRY & INTERACTIVES</h2>
+                <div class="target-wrapper">
+                    <p style="max-width: 300px;">
+                        This is a paragraph unit. Standard infantry. Low point value but great for keeping your combo meter active between high-value targets.
+                    </p>
+                    <button class="dummy-btn">BUTTON UNIT</button>
+                    <ul>
+                        <li>List Item Alpha</li>
+                        <li>List Item Beta</li>
+                        <li>List Item Gamma</li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- Link Traps -->
+             <div class="dummy-group">
+                <h2>HAZARD: HYPERLINKS</h2>
+                <p>Links should be deactivated. Try clicking them.</p>
+                <div class="target-wrapper">
+                    <a href="#" style="color: var(--primary); text-decoration: underline; font-size: 20px;">DANGEROUS LINK 01</a>
+                    <a href="#" style="color: var(--secondary); text-decoration: underline; font-size: 20px;">DANGEROUS LINK 02</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top: 60px;">
+            <a href="../welcome.html" style="color: #666; text-decoration: none; border-bottom: 1px dotted #666;">&larr; Return to Base</a>
+        </div>
+    </div>
+</body>
+</html>

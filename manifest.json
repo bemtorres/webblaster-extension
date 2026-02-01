@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "WEBBLASTER",
+  "version": "1.0",
+  "description": "Playing to delete web content with gamer style scoring and combos.",
+  "icons": {
+      "16": "images/WEBBLASTER.png",
+      "48": "images/WEBBLASTER.png",
+      "128": "images/WEBBLASTER.png"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["js/content.js"],
+      "css": ["css/game.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["css/game.css", "sounds/shot_fx.mp3", "sounds/PixelSkyway.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

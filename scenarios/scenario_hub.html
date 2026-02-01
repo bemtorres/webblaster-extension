@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBBLASTER - Scenario Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/page_styles.css">
+    <style>
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(30,30,30,0.8);
+            border: 1px solid #444;
+            padding: 25px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: #444;
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border-color: var(--primary);
+            background: rgba(40,40,40,0.95);
+        }
+
+        .card:hover::before {
+            background: var(--primary);
+        }
+
+        .card h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            line-height: 1.5;
+        }
+
+        .card p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .difficulty-meter {
+            display: flex;
+            gap: 2px;
+            margin-top: 15px;
+        }
+        
+        .diff-seg {
+            height: 6px; 
+            width: 20px; 
+            background: #333;
+            transform: skewX(-20deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MISSION <span style="color:var(--primary)">SELECT</span></h1>
+            <div class="subtitle">Choose Your Target Environment</div>
+        </header>
+
+        <section class="features-grid">
+            <a href="training.html" class="card" style="text-decoration: none;">
+                <h3>DOJO</h3>
+                <p>Basic training. Static dummies. Learn the mechanics.</p>
+                <div>
+                   <div style="font-size:10px; color:#888; margin-bottom:5px;">DIFFICULTY</div>
+                   <div class="difficulty-meter">
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                   </div>
+                </div>
+            </a>
+
+            <a href="scenario_news.html" class="card" style="text-decoration: none;">
+                <h3>THE DAILY GLITCH</h3>
+                <p>News Portal. High density of text and headers. Good for rapid combo chains.</p>
+                <div>
+                   <div style="font-size:10px; color:#888; margin-bottom:5px;">DIFFICULTY</div>
+                   <div class="difficulty-meter">
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                   </div>
+                </div>
+            </a>
+
+            <a href="scenario_shop.html" class="card" style="text-decoration: none;">
+                <h3>CYBER MALL</h3>
+                <p>E-Commerce Grid. Images and Buttons. High value targets packed together.</p>
+                <div>
+                   <div style="font-size:10px; color:#888; margin-bottom:5px;">DIFFICULTY</div>
+                   <div class="difficulty-meter">
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg" style="background:var(--primary)"></div>
+                       <div class="diff-seg"></div>
+                       <div class="diff-seg"></div>
+                   </div>
+                </div>
+            </a>
+
+            <a href="scenario_tables.html" class="card" style="text-decoration: none;">
+                <h3>DATA CENTER</h3>
+                <p>Tables & Databases. Practice the SHIFT+CLICK mechanic to wipe entire rows/tables.</p>
+                <div>
+                   <div style="font-size:10px; color:#888; margin-bottom:5px;">DIFFICULTY</div>
+                   <div class="difficulty-meter">
+                       <div class="diff-seg" style="background:var(--secondary)"></div>
+                       <div class="diff-seg" style="background:var(--secondary)"></div>
+                       <div class="diff-seg" style="background:var(--secondary)"></div>
+                       <div class="diff-seg" style="background:var(--secondary)"></div>
+                       <div class="diff-seg"></div>
+                   </div>
+                </div>
+            </a>
+
+            <a href="scenario_chaos.html" class="card" style="text-decoration: none;">
+                <h3>CHAOS CHAMBER</h3>
+                <p>Unstable Elements. Moving targets. Test your aim and reflexes.</p>
+                <div>
+                   <div style="font-size:10px; color:#888; margin-bottom:5px;">DIFFICULTY</div>
+                   <div class="difficulty-meter">
+                       <div class="diff-seg" style="background:#ff003c"></div>
+                       <div class="diff-seg" style="background:#ff003c"></div>
+                       <div class="diff-seg" style="background:#ff003c"></div>
+                       <div class="diff-seg" style="background:#ff003c"></div>
+                       <div class="diff-seg" style="background:#ff003c"></div>
+                   </div>
+                </div>
+            </a>
+        </section>
+
+        <div style="margin-top: 60px; text-align: center;">
+            <a href="../index.html" style="color: #666; text-decoration: none; border-bottom: 1px dotted #666;">&larr; Return to Base</a>
+        </div>
+    </div>
+</body>
+</html>

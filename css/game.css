@@ -1,0 +1,354 @@
+/* GAME UI CONTAINER - NOW A TOP BAR */
+#web-blaster-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 2px solid #f8c51e;
+  z-index: 2147483647;
+  /* Max z-index */
+  font-family: 'Rajdhani', sans-serif;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  transform: none;
+  pointer-events: auto;
+}
+
+/* Left Section: Config & Time */
+.wb-hud-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.wb-icon-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #f8c51e;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+}
+
+.wb-icon-btn:hover {
+  background: #f8c51e;
+  color: #000;
+  box-shadow: 0 0 10px #f8c51e;
+}
+
+.wb-timer-box {
+  text-align: center;
+}
+
+.wb-timer {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 2px 2px #ff003c;
+  min-width: 100px;
+}
+
+/* Center Section: Combo Please */
+.wb-hud-center {
+  flex-grow: 1;
+  margin: 0 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wb-combo-bar-bg {
+  width: 100%;
+  height: 10px;
+  background: #222;
+  border: 1px solid #444;
+  position: relative;
+  overflow: hidden;
+  transform: skewX(-20deg);
+}
+
+.wb-combo-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff003c, #f8c51e);
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px #ff003c;
+}
+
+.wb-combo-text {
+  text-align: center;
+  color: #ff003c;
+  font-weight: bold;
+  font-size: 14px;
+  height: 20px;
+  margin-bottom: 2px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.wb-combo-text.active {
+  opacity: 1;
+}
+
+/* Right Section: Score & Controls */
+.wb-hud-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.wb-score-box {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.wb-label {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+
+.wb-score-val {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  color: #f8c51e;
+  line-height: 1;
+}
+
+.wb-btn-stop {
+  background: #ff003c;
+  border: none;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+  transition: transform 0.1s;
+}
+
+.wb-btn-stop:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ff003c;
+}
+
+/* TARGET HIGHLIGHT */
+.wb-target-hover {
+  outline: 2px solid #ff003c !important;
+  outline-offset: -2px;
+  cursor: crosshair !important;
+  box-shadow: inset 0 0 20px rgba(255, 0, 60, 0.3) !important;
+  position: relative;
+}
+
+.wb-target-hover::after {
+  content: 'DESTROY';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #ff003c;
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  z-index: 10001;
+  font-family: sans-serif;
+  pointer-events: none;
+}
+
+/* DESTRUCTION ANIMATION */
+.wb-destroyed {
+  animation: wb-glitch-anim 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  pointer-events: none !important;
+}
+
+@keyframes wb-glitch-anim {
+  0% {
+    transform: translate(0);
+    opacity: 1;
+    filter: none;
+  }
+
+  20% {
+    transform: translate(-5px, 5px) skewX(10deg);
+    filter: hue-rotate(90deg) invert(1);
+  }
+
+  40% {
+    transform: translate(5px, -5px) skewX(-10deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+    filter: blur(10px);
+  }
+}
+
+/* FLOATING TEXT */
+.wb-float-text {
+  position: fixed;
+  font-family: 'Impact', sans-serif;
+  font-weight: bold;
+  color: #f8c51e;
+  pointer-events: none;
+  z-index: 10000001;
+  text-shadow: 2px 2px 0 #000;
+  white-space: nowrap;
+  animation: wb-float-up 1s ease-out forwards;
+}
+
+.wb-float-combo {
+  color: #ff003c;
+  font-size: 30px !important;
+  text-shadow: 0 0 10px #ff003c;
+}
+
+@keyframes wb-float-up {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* PARENT TARGET HIGHLIGHT */
+.wb-parent-hover {
+  outline: 2px dashed #f8c51e !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 15px rgba(248, 197, 30, 0.5) !important;
+  position: relative;
+  z-index: 10000;
+}
+
+.wb-parent-hover::before {
+  content: 'DESTROY PARENT TARGET';
+  position: absolute;
+  top: -20px;
+  right: 0;
+  background: #f8c51e;
+  color: black;
+  font-size: 10px;
+  padding: 2px 4px;
+  z-index: 10001;
+  font-family: sans-serif;
+  pointer-events: none;
+  font-weight: bold;
+}
+
+/* BOSS/GOLDEN TARGET STYLES */
+.wb-boss {
+  outline: 4px solid gold !important;
+  outline-offset: -4px;
+  box-shadow: 0 0 20px gold, inset 0 0 20px gold !important;
+  animation: wb-boss-pulse 0.5s infinite alternate;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="red" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>') 12 12, crosshair !important;
+  position: relative;
+  z-index: 9999;
+}
+
+.wb-boss::after {
+  content: "BOSS HP: " attr(data-wb-health);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 5px;
+  pointer-events: none;
+  font-family: sans-serif;
+  border: 1px solid white;
+}
+
+@keyframes wb-boss-pulse {
+  0% {
+    outline-color: gold;
+    box-shadow: 0 0 20px gold;
+  }
+
+  100% {
+    outline-color: #ff4500;
+    box-shadow: 0 0 40px #ff4500;
+  }
+}
+
+.wb-boss-hit {
+  animation: wb-boss-shake 0.1s;
+  background: rgba(255, 0, 0, 0.3) !important;
+}
+
+@keyframes wb-boss-shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.wb-boss-exploded {
+  animation: wb-screen-jump 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  z-index: 100000 !important;
+  pointer-events: none;
+}
+
+@keyframes wb-screen-jump {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(2) rotate(10deg);
+    opacity: 0.8;
+    filter: brightness(2) contrast(2);
+  }
+
+  100% {
+    transform: scale(4) rotate(-10deg);
+    opacity: 0;
+    filter: blur(20px);
+  }
+
+  /* ensure everything is clickable when game is active */
+  body.wb-game-active * {
+    cursor: crosshair !important;
+  }
