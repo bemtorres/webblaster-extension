@@ -16,10 +16,11 @@
     maxComboTime: 3000,
     startTime: 0,
     elapsedSeconds: 0,
+    clicks: 0,
     soundEnabled: true
   };
 
-  let hud, scoreEl, comboBar, comboText, timerEl, gameLoopRequest, bossInterval;
+  let hud, scoreEl, clickEl, comboBar, comboText, timerEl, gameLoopRequest, bossInterval;
   let lastTime = 0;
   let hoverTarget = null;
   let bgMusic = null;
@@ -59,6 +60,7 @@
     state.comboTimer = 0;
     state.startTime = Date.now();
     state.elapsedSeconds = 0;
+    state.clicks = 0;
     document.body.classList.add('wb-game-active');
     createHUD();
     createCanvasOverlay();
@@ -99,6 +101,10 @@
                     <div class="wb-label">TIME</div>
                     <div class="wb-timer">00:00</div>
                 </div>
+                <div class="wb-clicks-box" style="margin-left: 10px; text-align: center;">
+                    <div class="wb-label">CLICKS</div>
+                    <div class="wb-clicks-val" style="font-family: 'Press Start 2P'; font-size: 10px; color: #fff;">0</div>
+                </div>
             </div>
 
             <div class="wb-hud-center">
@@ -124,6 +130,7 @@
 
     hud = hudDiv;
     scoreEl = hud.querySelector('.wb-score-val');
+    clickEl = hud.querySelector('.wb-clicks-val');
     comboBar = hud.querySelector('.wb-combo-fill');
     comboText = hud.querySelector('.wb-combo-text');
     timerEl = hud.querySelector('.wb-timer');
@@ -277,6 +284,9 @@
     e.stopPropagation();
 
     let target = e.target;
+
+    state.clicks++;
+    updateHUD();
 
     // Check for Boss logic
     if (target.classList.contains('wb-boss')) {
@@ -469,6 +479,7 @@
   function updateHUD() {
     if (!scoreEl) return;
     scoreEl.innerText = state.score.toLocaleString();
+    if (clickEl) clickEl.innerText = state.clicks.toLocaleString();
     if (state.combo > 1) {
       comboText.innerText = `COMBO x${state.combo}`;
       comboText.classList.add('active');
