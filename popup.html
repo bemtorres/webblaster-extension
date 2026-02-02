@@ -20,50 +20,129 @@
     </header>
 
     <main>
-      <div class="panel-box">
-        <div class="panel-header">MODE SELECT</div>
-        <div class="mode-selector">
-          <div class="mode-option selected" data-mode="free">
-            <span class="icon">∞</span> FREE STYLE
-          </div>
-          <div class="mode-option" data-mode="timed">
-            <span class="icon">⏱</span> TIMED RUN
-          </div>
-        </div>
+      <!-- TABS -->
+      <div class="tabs" style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #444; padding-bottom:10px; overflow-x: auto;">
+          <button class="tab-btn active" data-tab="play">PLAY</button>
+          <button class="tab-btn" data-tab="profile">PROFILE</button>
+          <button class="tab-btn" data-tab="challenges">CHALLENGES</button>
+          <button class="tab-btn" data-tab="ranking">RANKING</button>
       </div>
 
-      <div id="timer-settings" class="panel-box hidden">
-        <div class="panel-header">TIME LIMIT</div>
-        <div class="timer-inputs">
-          <div class="timer-control">
-            <input type="number" id="time-min" value="1" min="0" max="10">
-            <label>MIN</label>
+      <!-- PLAY TAB -->
+      <div id="tab-play" class="tab-content active">
+          <div class="panel-box">
+            <div class="panel-header">MODE SELECT</div>
+            <div class="mode-selector">
+              <div class="mode-option selected" data-mode="free">
+                <span class="icon">∞</span> FREE STYLE
+              </div>
+              <div class="mode-option" data-mode="timed">
+                <span class="icon">⏱</span> TIMED RUN
+              </div>
+              <div class="mode-option" data-mode="extreme">
+                <span class="icon">☠</span> EXTREME
+              </div>
+            </div>
           </div>
-          <span class="separator">:</span>
-          <div class="timer-control">
-            <input type="number" id="time-sec" value="00" min="0" max="59">
-            <label>SEC</label>
+
+          <div id="timer-settings" class="panel-box hidden">
+            <div class="panel-header">TIME LIMIT</div>
+            <div class="timer-inputs">
+              <div class="timer-control">
+                <input type="number" id="time-min" value="1" min="0" max="10">
+                <label>MIN</label>
+              </div>
+              <span class="separator">:</span>
+              <div class="timer-control">
+                <input type="number" id="time-sec" value="00" min="0" max="59">
+                <label>SEC</label>
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div class="action-area">
+            <button id="toggleBtn" class="cybr-btn">
+              START_GAME<span aria-hidden>_</span>
+              <span aria-hidden class="cybr-btn__glitch">START_GAME</span>
+              <span aria-hidden class="cybr-btn__tag">R25</span>
+            </button>
+          </div>
+
+          <div class="instructions">
+            <div class="inst-row"><span>[CLICK]</span> DESTROY</div>
+            <div class="inst-row"><span>[SHIFT+CLICK]</span> NUKE</div>
+          </div>
       </div>
 
-      <div class="action-area">
-        <button id="toggleBtn" class="cybr-btn">
-          START_GAME<span aria-hidden>_</span>
-          <span aria-hidden class="cybr-btn__glitch">START_GAME</span>
-          <span aria-hidden class="cybr-btn__tag">R25</span>
-        </button>
+      <!-- PROFILE TAB -->
+      <div id="tab-profile" class="tab-content hidden">
+          <div class="panel-box">
+              <div class="panel-header">OPERATOR STATUS</div>
+              <div style="text-align:center; padding:10px;">
+                  <div id="p-rank" style="font-size:12px; color:#f8c51e; font-weight:bold;">LOADING...</div>
+                  <div style="font-size:24px; color:#fff; font-family:'Press Start 2P'; margin:10px 0;">LVL <span id="p-level">0</span></div>
+                  <div class="xp-bar-bg" style="background:#333; height:8px; width:100%; border-radius:4px; overflow:hidden;">
+                      <div id="p-xp-fill" style="background:#f8c51e; height:100%; width:0%;"></div>
+                  </div>
+                  <div style="font-size:10px; color:#666; margin-top:5px; text-align:right;">XP: <span id="p-xp">0</span></div>
+              </div>
+          </div>
+          <div class="panel-box">
+              <div class="panel-header">CAREER STATS</div>
+              <div id="p-stats-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:11px;">
+                  <div>TOTAL KILLS: <span id="s-kills" style="color:#fff">0</span></div>
+                  <div>MAX COMBO: <span id="s-combo" style="color:#fff">0</span></div>
+                  <div>IMAGES REMOVED: <span id="s-img" style="color:#fff">0</span></div>
+                  <div>HEADERS REMOVED: <span id="s-h1" style="color:#fff">0</span></div>
+              </div>
+          </div>
       </div>
 
-      <div class="instructions">
-        <div class="inst-row"><span>[CLICK]</span> DESTROY</div>
-        <div class="inst-row"><span>[SHIFT+CLICK]</span> NUKE</div>
+      <!-- CHALLENGES TAB -->
+      <div id="tab-challenges" class="tab-content hidden">
+          <div id="challenges-list" style="max-height:300px; overflow-y:auto; padding-right:5px;">
+              <!-- Populated by JS -->
+              <div style="text-align:center; color:#666; font-size:10px;">Loading Challenges...</div>
+          </div>
+          <div style="margin-top:20px; text-align:center;">
+              <button id="reset-stats-btn" style="background:#222; border:1px solid #444; color:#666; font-family:'Press Start 2P'; font-size:8px; padding:5px 10px; cursor:pointer;">RESET PROGRESS</button>
+          </div>
       </div>
+
+      <!-- RANKING TAB -->
+      <div id="tab-ranking" class="tab-content hidden">
+          <div class="panel-box" style="text-align:center; padding:30px 10px;">
+              <div style="font-size:40px; margin-bottom:10px;">🚧</div>
+              <div style="color:#f8c51e; font-weight:bold; margin-bottom:10px;">COMING SOON</div>
+              <div style="font-size:11px; color:#aaa; line-height:1.5; margin-bottom:20px;">
+                  Global leaderboards are under construction. Stay tuned for updates!
+              </div>
+              <a href="https://github.com/bemtorres/webblaster-extension" target="_blank" class="cybr-btn small-btn" style="text-decoration:none; display:inline-block; width:auto !important; padding:0 15px;">
+                  VISIT GITHUB
+              </a>
+          </div>
+      </div>
+
     </main>
+
+    <!-- CUSTOM MODAL -->
+    <div id="custom-modal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <div class="modal-header">SYSTEM ALERT</div>
+        <div class="modal-body">
+          WARNING: THIS ACTION CANNOT BE UNDONE.<br><br>
+          ALL XP, LEVELS, AND UNLOCKS WILL BE PURGED.
+        </div>
+        <div class="modal-actions">
+          <button id="modal-cancel" class="cybr-btn small-btn">CANCEL</button>
+          <button id="modal-confirm" class="cybr-btn small-btn danger">CONFIRM</button>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="credits">
-        DEV: <a href="https://github.com/bemtorres" target="_blank">bemtorres</a>
+        DEV: <a href="https://github.com/bemtorres" target="_blank" style="text-decoration:none; color:white; font-family:'Press Start 2P'; font-size:10px;">@BEMTORRES</a>
       </div>
     </footer>
   </div>

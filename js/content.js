@@ -91,6 +91,10 @@
 
     document.body.classList.add('wb-game-active');
 
+    if (typeof ChallengeManager !== 'undefined') {
+      ChallengeManager.init();
+    }
+
     createHUD();
     createCanvasOverlay();
 
@@ -123,6 +127,7 @@
     stopBossSpawner();
     stopMusic();
 
+
     // Cleanup visuals
     document.querySelectorAll('.wb-target-hover').forEach(el => el.classList.remove('wb-target-hover'));
     document.querySelectorAll('.wb-parent-hover').forEach(el => el.classList.remove('wb-parent-hover'));
@@ -130,6 +135,10 @@
       el.classList.remove('wb-boss');
       el.removeAttribute('data-wb-health');
     });
+
+    // Cleanup Extreme Chaos
+    stopExtremeChaos();
+    document.querySelectorAll('.wb-clone').forEach(el => el.remove());
 
     console.log("WEBBLASTER: GAME OVER");
   }
@@ -574,6 +583,12 @@
     state.combo += 5; // Bonus combo
     state.comboTimer = state.maxComboTime;
 
+    // --- Challenges Hook ---
+    if (typeof ChallengeManager !== 'undefined') {
+      ChallengeManager.addXP(SCORING.BOSS);
+      ChallengeManager.updateMaxCombo(state.combo);
+    }
+
     updateHUD();
     spawnFloatingText(el, "BOSS DESTROYED! +5000 XP", true);
 
@@ -696,6 +711,13 @@
     const totalPoints = points * multiplier;
     state.score += totalPoints;
 
+    // --- Challenges Hook ---
+    if (typeof ChallengeManager !== 'undefined') {
+      ChallengeManager.addXP(totalPoints);
+      ChallengeManager.recordDestruction(tag);
+      ChallengeManager.updateMaxCombo(state.combo);
+    }
+
     playShootSound();
 
     updateHUD();
@@ -794,7 +816,7 @@
     const now = Date.now();
     let displaySeconds = 0;
 
-    if (state.mode === 'timed') {
+    if (state.mode === 'timed' || state.mode === 'extreme') {
       const elapsed = Math.floor((now - state.startTime) / 1000);
       const remaining = state.timeLimit - elapsed;
 
@@ -818,13 +840,24 @@
       const seconds = (displaySeconds % 60).toString().padStart(2, '0');
       timerEl.innerText = `${minutes}:${seconds}`;
 
-      // Warn last 10 seconds in timed mode
-      if (state.mode === 'timed' && displaySeconds <= 10) {
+      // Warn last 10 seconds in timed/extreme mode
+      if ((state.mode === 'timed' || state.mode === 'extreme') && displaySeconds <= 10) {
         timerEl.style.color = (displaySeconds % 2 === 0) ? '#ff003c' : '#fff';
+
+        // Voice Countdown for 3, 2, 1
+        if (displaySeconds === 3) playSingleSound('sounds/fx_3_three.mp3');
+        if (displaySeconds === 2) playSingleSound('sounds/fx_2_two.mp3');
+        if (displaySeconds === 1) playSingleSound('sounds/fx_1_one.mp3');
+
       } else {
         timerEl.style.color = '#fff';
       }
     }
+  }
+
+  function playSingleSound(file) {
+    if (!state.soundEnabled) return;
+    try { new Audio(chrome.runtime.getURL(file)).play(); } catch (e) { }
   }
 
   function spawnFloatingText(targetEl, text, isCombo) {
@@ -882,7 +915,54 @@
     ctx.globalAlpha = 1.0;
   }
 
+  // --- Extreme Chaos Logic ---
+  let chaosInterval = null;
+  let shakeInterval = null;
+
+  function startExtremeChaos() {
+    // 1. Clone random elements every 1s
+    chaosInterval = setInterval(() => {
+      if (!state.active || state.isPaused) return;
+      const all = document.body.querySelectorAll('p, img, h1, h2, div');
+      if (all.length > 0) {
+        const target = all[Math.floor(Math.random() * all.length)];
+        // only clone visible small targets to avoid layout break
+        if (target.tagName !== 'DIV' || target.innerText.length < 50) {
+          try {
+            const clone = target.cloneNode(true);
+            clone.classList.add('wb-clone');
+            clone.style.position = 'absolute';
+            clone.style.top = Math.random() * window.innerHeight + 'px';
+            clone.style.left = Math.random() * window.innerWidth + 'px';
+            clone.style.zIndex = Math.floor(Math.random() * 1000);
+            document.body.appendChild(clone);
+          } catch (e) { }
+        }
+      }
+    }, 500);
+
+    // 2. Shake random text every 2s
+    shakeInterval = setInterval(() => {
+      if (!state.active || state.isPaused) return;
+      const all = document.body.querySelectorAll('h1, h2, p, span, a');
+      if (all.length > 0) {
+        const target = all[Math.floor(Math.random() * all.length)];
+        target.classList.add('wb-chaos-shake');
+        setTimeout(() => target.classList.remove('wb-chaos-shake'), 4000);
+      }
+    }, 200);
+  }
+
+  function stopExtremeChaos() {
+    if (chaosInterval) clearInterval(chaosInterval);
+    if (shakeInterval) clearInterval(shakeInterval);
+  }
+
   function startGameLoop() {
+    if (gameLoopRequest) cancelAnimationFrame(gameLoopRequest);
+
+    if (state.mode === 'extreme') startExtremeChaos();
+
     lastTime = performance.now();
     gameLoopRequest = requestAnimationFrame(gameLoop);
   }

@@ -24,13 +24,15 @@ echo.
 echo [1/3] Creating Staging Area (dist)...
 mkdir dist
 
+
 echo [2/3] Copying Specific Files...
 
 rem -- Root Files
 copy /y manifest.json dist\
 copy /y popup.html dist\
-copy /y welcome.html dist\
 copy /y index.html dist\
+copy /y PRIVACY_POLICY.md dist\
+copy /y README.md dist\
 
 rem -- Directories
 rem -- Directories
@@ -41,6 +43,7 @@ xcopy /s /y /i scenarios dist\scenarios
 rem -- Sounds (Only MP3, exclude WAV dev files)
 mkdir dist\sounds
 copy /y sounds\*.mp3 dist\sounds\
+copy /y sounds\credit.txt dist\sounds\
 
 rem -- Images (Only PNG, avoid promo GIFs)
 mkdir dist\images

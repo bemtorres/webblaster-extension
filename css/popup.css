@@ -75,8 +75,9 @@ header {
 .status-indicator {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 14px;
   color: #888;
   text-transform: uppercase;
@@ -411,6 +412,7 @@ header {
   color: var(--secondary);
 }
 
+
 .credits {
   margin-top: 20px;
   font-size: 10px;
@@ -418,4 +420,165 @@ header {
   text-align: center;
   border-top: 1px solid #222;
   padding-top: 10px;
+}
+
+/* Tabs */
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #666;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+  color: #aaa;
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  text-shadow: 0 0 5px rgba(248, 197, 30, 0.5);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Scrollbar for lists */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+
+/* MODAL STYLES */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+
+.modal-box {
+  width: 80%;
+  background: #111;
+  border: 1px solid #444;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  animation: modalPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid var(--secondary);
+  border-left: 2px solid var(--secondary);
+}
+
+.modal-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid var(--secondary);
+  border-right: 2px solid var(--secondary);
+}
+
+.modal-header {
+  background: var(--secondary);
+  color: #fff;
+  padding: 10px;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+  text-align: center;
+}
+
+.modal-body {
+  padding: 20px;
+  font-size: 12px;
+  color: #ccc;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 15px 15px 15px;
+  justify-content: center;
+}
+
+.small-btn {
+  min-width: auto !important;
+  width: 100px !important;
+  height: 30px !important;
+  line-height: 30px !important;
+  font-size: 10px !important;
+  --font-size: 10px !important;
+  --clip: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+  --border: 2px !important;
+}
+
+.small-btn.danger {
+  --primary: var(--secondary) !important;
+  --shadow-primary: #800 !important;
 }

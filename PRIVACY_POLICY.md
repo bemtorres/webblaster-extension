@@ -22,14 +22,29 @@ The Extension requests the following permissions to function:
 
 These permissions are strictly used to enable the core gameplay mechanics (selecting and hiding HTML elements) and are not used for any other purpose.
 
+
 ## 3. Data Persistence
-The Extension may use your browser's local storage (`chrome.storage.local`) solely to save your personal preferences, such as:
-*   Sound settings (Mute/Unmute)
-*   High scores (stored locally on your device)
+The Extension uses your browser's local storage (`chrome.storage.local`) solely to save your personal game progress and preferences, such as:
+*   **XP and Level:** Your current experience points and rank.
+*   **Challenges:** Status of unlocked achievements (e.g., "Social Detox", "Wiki Vandal").
+*   **Stats:** Cumulative data like total elements destroyed, maximum combo, and specific tags removed.
+*   **Settings:** Game preferences (High Scores, Sound configs).
 
-This data never leaves your browser and can be cleared at any time by uninstalling the Extension or clearing your browser data.
+This data **never leaves your browser**. It is stored locally on your device and is not synchronized to any cloud server by us. You can wipe this data at any time using the "RESET PROGRESS" button in the extension popup or by clearing your browser data.
 
-## 4. Third-Party Services
+## 4. Health and Safety Warning (Photosensitive Epilepsy)
+**⚠️ WARNING: READ BEFORE PLAYING**
+
+This extension includes visual effects that may trigger seizures or other adverse reactions in a very small percentage of individuals with **photosensitive epilepsy**.
+
+*   **Flashing Lights & Patterns:** The game involves rapid movements, flashing colors, and sudden visual changes, particularly in **"EXTREME MODE"** (shaking screens, color inversion/cloning).
+*   **Risk:** Certain lighting patterns or backgrounds on web pages, combined with the game's effects, may induce a seizure even in users who have no history of prior seizures or epilepsy.
+
+**If you or anyone in your family has an epileptic condition, consult your physician prior to playing.**
+
+**IMMEDIATELY STOP PLAYING and consult a doctor if you experience:** dizziness, altered vision, eye or muscle twitches, loss of awareness, disorientation, any involuntary movement, or convulsions.
+
+## 5. Third-Party Services
 The Extension does not integrate with any third-party services, ad networks, or tracking pixels.
 
 ## 5. Contact
