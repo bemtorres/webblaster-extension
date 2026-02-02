@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBBLASTER - Social Feed</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+        }
+        .post {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .post-name {
+            font-weight: bold;
+            color: #050505;
+        }
+        .post-time {
+            font-size: 12px;
+            color: #65676b;
+        }
+        .post-image {
+            width: 100%;
+            height: 300px;
+            background: #e4e6eb;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .actions {
+            display: flex;
+            border-top: 1px solid #ced0d4;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            padding: 5px;
+            color: #65676b;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .action-btn:hover {
+            background: #f0f2f5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- New Post Area -->
+        <div class="header">
+            <div class="avatar" style="background:var(--primary)"></div>
+            <div style="flex:1; background:#f0f2f5; padding:10px; border-radius:20px; color:#65676b;">
+                What's on your mind?
+            </div>
+        </div>
+
+        <!-- Feed -->
+        <!-- Post 1 -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar" style="background:#ff003c"></div>
+                <div>
+                    <div class="post-name">CyberPunk 2077</div>
+                    <div class="post-time">2 hrs ago</div>
+                </div>
+            </div>
+            <p>Wake up samurai, we have a city to burn! 🔥 The new update is live. Check out the patch notes below.</p>
+            <div class="post-image" style="background:#f8c51e"></div>
+            <div class="actions">
+                <div class="action-btn">Like</div>
+                <div class="action-btn">Comment</div>
+                <div class="action-btn">Share</div>
+            </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar" style="background:#333"></div>
+                <div>
+                    <div class="post-name">Tech Insider</div>
+                    <div class="post-time">5 hrs ago</div>
+                </div>
+            </div>
+            <p>Is AI taking over web browsing? This new Chrome extension lets you destroy websites just for fun. Experts say it's "satisfyingly destructive".</p>
+            <div class="post-image" style="background:#555"></div>
+            <div class="actions">
+                <div class="action-btn">Like</div>
+                <div class="action-btn">Comment</div>
+                <div class="action-btn">Share</div>
+            </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar" style="background:#00f"></div>
+                <div>
+                    <div class="post-name">Travel Vibes</div>
+                    <div class="post-time">Just now</div>
+                </div>
+            </div>
+            <p>Missing these summer views! 🏖️ Who else needs a vacation right now?</p>
+            <img src="https://via.placeholder.com/600x300" alt="Vacation" style="width:100%; border-radius:8px;">
+            <div class="actions">
+                <div class="action-btn">Like</div>
+                <div class="action-btn">Comment</div>
+                <div class="action-btn">Share</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manual Start/Stop Simulation Script -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+    
+    <!-- Simulation Control -->
+    <div style="position:fixed; bottom:20px; right:20px; z-index:10000;">
+        <button id="manual-start-btn" style="padding:15px 30px; background:#ff003c; color:white; border:none; font-family:'Courier New', monospace; font-weight:bold; cursor:pointer; box-shadow:0 0 10px #000;">ENABLE SIMULATION MODE</button>
+    </div>
+</body>
+</html>

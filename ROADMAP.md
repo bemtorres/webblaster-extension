@@ -4,57 +4,59 @@ This document outlines the strategic vision for the evolution of **WEBBLASTER**.
 
 ---
 
-## Phase 1: Polish & Feedback (Current)
-- [x] **Refined Scoring:** Different points for different tags.
-- [x] **Structural Destruction:** Shift+Click to delete parents/tables.
-- [x] **Boss Mechanics:** Random high-HP targets.
-- [x] **Diverse Scenarios:** News, Shop, Chaos, Tables.
-- [ ] **Bug Fixes:** Ensure overlay doesn't block essential site navigation when inactive.
-
-## Phase 2: "Juice" & Audio (Next Steps)
-The game currently feels good but sounds silent.
-- [x] **Sound Effects (SFX):**
-    - [x] Blaster shot sound.
-    - [x] Background Music (Lo-Fi loop).
-    - [ ] Combo multiplier announcements ("DOUBLE KILL", "RAMPAGE").
-    - [ ] Boss alarm and explosion sounds.
-    - *Tech:* Use `AudioContext` or simple HTML5 Audio.
-- **[ ] Advanced Visuals:**
-    - [x] CRT Scanline effects.
-    - [x] Glitch animations on buttons.
-    - [ ] Canvas-based particle explosions (bits of the website flying off).
-    - [ ] Screen shake intensity based on element size.
-
-## Phase 3: Progression Systems
-Give the player a reason to keep playing.
-- **[ ] Persistent Stats:**
-    - Total elements destroyed.
-    - Career high score.
-    - "Most Hated Tag" stats (e.g., "You destroyed 5000 DIVs").
-    - *Tech:* `chrome.storage.local`.
-- **[ ] Level Up System:**
-    - Earn XP to level up your rank (Script Kiddie -> SysAdmin -> NetRunner).
-    - Unlockable visual themes (Matrix Green, Vaporwave Pink, Terminal Mono).
-
-## Phase 4: Arsenal Expansion
-New tools to destroy the web.
-- **[ ] Weapon Selector:**
-    - **Laser:** Instant hit, standard points.
-    - [ ] **Shotgun:** Area of effect damage (destroy clusters of text).
-    - **Grenade:** Thrown projectile that explodes a generic `div` area after 2s.
-    - **Nuke:** Clears the entire viewport (10 min cooldown).
-- [x] **Smart Targets:**
-    - [x] Logic to prevent destroying structural DIVs by accident.
-    - [x] "Enemy" class system for simulations.
-
-## Phase 5: Social & Global (Long Term)
-- **[ ] Leaderboards:** Global high scores for popular domains (who got the highest score on google.com?).
-- **[ ] Challenges:** Daily targets ("Destroy 50 Images today").
+## ✅ Phase 1: Foundation & "Juice" (COMPLETED)
+- [x] **Core Mechanics:** Click to destroy, Shift+Click for structural damage.
+- [x] **Scoring System:** Dynamic points based on HTML tags.
+- [x] **Combo System:** Multipliers for rapid destruction + Visual Combo Bar.
+- [x] **Audio Experience:** 
+    - Retro SFX for shots and interactions.
+    - Dynamic BGM changes (PixelSkyway vs FinalCoreMeltdown).
+    - Pitch variation for Boss hits and Explosions.
+- [x] **Game Modes:** 
+    - **Free Mode:** Infinite destruction.
+    - **Timed Mode:** Countdown challenge with visual alerts.
+- [x] **Visual Polish:** CRT effects, Glitch animations, Canvas-based particle explosions.
+- [x] **Scenarios:** Dedicated training environments (News, Shop, Countdown, Extension Test).
+- [x] **Compliance:** Privacy Policy and Google Web Store ready structure.
 
 ---
 
-## 💡 Quick Wins (Can do now)
-1.  **[ ] Cursor Customization:** Change the crosshair based on Combo level.
-2.  **[ ] Theme Selector:** Simple toggle in the settings for different color schemes.
-3.  **[ ] Local High Score:** Show "Personal Best" in the HUD.
-4.  [x] **Custom Branding:** Updated Logos and README.
+## 🚀 Phase 2: Progression & Persistence (NEXT PRIORITY)
+Give the player a reason to keep returning.
+- **[ ] Persistent Career Stats:**
+    - Track "Total Elements Deleted" across all sessions.
+    - Track "Total Playtime".
+    - Save "Highest Score" per domain (e.g., your best run on google.com).
+    - *Tech:* `chrome.storage.local`.
+- **[ ] Rank System:**
+    - XP Bar in the popup.
+    - Titles: *Script Kiddie* -> *Code Breaker* -> *NetRunner* -> *Web God*.
+- **[ ] Unlockables:**
+    - Reaching Rank 5 unlocks new Crosshair styles.
+    - Reaching Rank 10 unlocks new UI Color Themes (Matrix Green, Vaporwave Pink).
+
+## ⚔️ Phase 3: Arsenal & Gameplay Depth
+Move beyond simple clicking.
+- **[ ] Weapon Selector (loadout):**
+    - **Shotgun:** Area of effect (AoE) damage that hits multiple small elements.
+    - **Machine Gun:** Hold click used for rapid destruction of containers.
+    - **Railgun:** Piercing shot that destroys elements stacked on top of each other (Z-Index killer).
+- **[ ] Advanced Enemies:**
+    - **Armored Elements:** Requires 3 clicks to break (css border turns red -> orange -> broken).
+    - **Moving Targets:** Elements that try to dodge your cursor using CSS transforms.
+- **[ ] Power-ups:**
+    - Occasionally spawn a "Power-up" icon on the page.
+    - *Effects:* Freeze Timer, Double Points, Nuke (Clear Viewport).
+
+## 🌐 Phase 4: Social & Competitive
+- **[ ] Local Leaderboard:** Simple table in the popup showing your top 10 runs.
+- **[ ] Daily Challenges:** Generates a random task daily (e.g., "Destroy 50 Images", "Score 10k on Wikipedia").
+- **[ ] Shareable Cards:** Generate a cool image of your "Mission Report" to share on social media.
+
+---
+
+## 💡 Quick Wins / Polish Tasks
+1.  **[ ] Dynamic Crosshair:** Crosshair expands/contracts when shooting.
+2.  **[ ] Screen Shake:** Subtle camera shake for heavy destructions (Images/Videos).
+3.  **[ ] Settings Menu:** ability to adjust volume separate for SFX and Music.
+4.  **[ ] Introduction Tutorial:** First-time install walkthrough overlay.

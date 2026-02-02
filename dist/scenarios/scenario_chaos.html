@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario: Chaos Chamber</title>
+    <link rel="stylesheet" href="../css/page_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .chaos-arena {
+            position: relative;
+            height: 600px;
+            border: 2px solid var(--primary);
+            overflow: hidden;
+            background: rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }
+
+        .floating-target {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-family: 'Press Start 2P';
+            font-size: 10px;
+            animation: floatAround 5s infinite linear;
+            cursor: pointer;
+            box-shadow: 0 0 10px #fff;
+        }
+        
+        .floating-target.red { background: #ff003c; color: white; animation-duration: 3s; }
+        .floating-target.blue { background: #00ccff; animation-duration: 7s; animation-direction: reverse; }
+        .floating-target.green { background: #00ff00; width: 50px; height: 50px; animation-duration: 2s; }
+
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 100px) rotate(90deg); }
+            50% { transform: translate(200px, 0) rotate(180deg); }
+            75% { transform: translate(100px, -100px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Specific animations for variety */
+        .move-1 { top: 10%; left: 10%; animation: move1 8s infinite alternate; }
+        .move-2 { top: 50%; left: 50%; animation: move2 6s infinite alternate; }
+        .move-3 { top: 80%; left: 20%; animation: move3 5s infinite alternate; }
+        
+        @keyframes move1 { 0% { left: 0; } 100% { left: 90%; } }
+        @keyframes move2 { 0% { top: 0; } 100% { top: 90%; } }
+        @keyframes move3 { 0% { transform: scale(1); } 100% { transform: scale(2) rotate(360deg); } }
+
+        .marquee-box {
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 40px;
+            font-family: 'Arial Black';
+            color: rgba(255,255,255,0.2);
+            position: absolute;
+            width: 100%;
+            pointer-events: none; /* Background noise */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>SCENARIO: <span style="color:var(--secondary)">CHAOS CHAMBER</span></h2>
+                <button id="manual-start-btn" class="cta-button" style="padding:10px 20px; font-size:12px;">ENABLE SIMULATION</button>
+            </div>
+            <a href="scenario_hub.html" style="color:#666; font-size:12px;">&larr; BACK TO MISSION SELECT</a>
+        </header>
+
+        <p>Warning: Targets in this sector are unstable. Accuracy is required.</p>
+
+        <div class="chaos-arena">
+            <div class="marquee-box" style="top:100px;">DONT PANIC DONT PANIC DONT PANIC</div>
+            
+            <div class="floating-target move-1 wb-enemy">HIT ME</div>
+            <div class="floating-target red move-2 wb-enemy">FAST</div>
+            <div class="floating-target blue move-3 wb-enemy">SLOW</div>
+            
+            <!-- Generate random positions via inline styles for static variety -->
+            <div class="floating-target green wb-enemy" style="top:20%; left:80%; animation-name: floatAround;">XP</div>
+            <div class="floating-target wb-enemy" style="top:70%; left:70%; border-radius:0;">BOX</div>
+            
+            <h1 style="position:absolute; top:40%; left:40%; animation: spin 10s infinite linear;" class="wb-enemy">BOSS</h1>
+        </div>
+
+        <style>
+            @keyframes spin { 100% { transform: rotate(360deg); } }
+        </style>
+    </div>
+
+    <!-- Simulation Dependencies -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+</body>
+</html>

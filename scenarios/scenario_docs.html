@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBBLASTER - Documentation Center</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background: #f4f4f4;
+            height: 100vh;
+            padding: 20px;
+            position: fixed;
+            border-right: 1px solid #ddd;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background: #e0e0e0;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+            max-width: 800px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        code {
+            background: #f8f8f8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #e74c3c;
+        }
+        pre {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .alert {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+        }
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-color: #ffeeba;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">Getting Started</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Components</a></li>
+            <li><a href="#">Advanced Usage</a></li>
+            <li><a href="#">Troubleshooting</a></li>
+        </ul>
+        <hr>
+        <h4>External Links</h4>
+        <ul>
+            <li><a href="#">GitHub Repo</a></li>
+            <li><a href="#">Community Forum</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Introduction</h1>
+        <p>Welcome to the <strong>WebBlaster API Documentation</strong>. This guide will help you understand how to destroy DOM elements programmatically.</p>
+        
+        <div class="alert">
+            <strong>Note:</strong> This is a simulation environment. No actual data will be lost.
+        </div>
+
+        <h2>Getting Started</h2>
+        <p>To begin using the library, install it via npm:</p>
+        <pre>npm install webblaster-core</pre>
+
+        <h3>Basic Usage</h3>
+        <p>Import the module and initialize the blaster:</p>
+        <pre>
+import { Blaster } from 'webblaster-core';
+
+const player = new Blaster({
+    power: 9000,
+    target: 'div'
+});
+
+player.fire();
+        </pre>
+
+        <h2>Configuration Options</h2>
+        <p>The <code>Blaster</code> constructor accepts the following options:</p>
+        <ul>
+            <li><code>power</code>: (Number) The destruction force.</li>
+            <li><code>target</code>: (String) CSS selector for the target.</li>
+            <li><code>sound</code>: (Boolean) Enable/Disable sound effects.</li>
+        </ul>
+
+        <div class="alert alert-warning">
+            <strong>Warning:</strong> High power settings may cause browser lag due to excessive particle generation.
+        </div>
+
+        <h2>Troubleshooting</h2>
+        <p>If you encounter issues, please check the console for error messages. Common errors include:</p>
+        <ul>
+            <li><code>TargetNotFoundException</code>: The specified selector matched no elements.</li>
+            <li><code>OutOfAmmoError</code>: You need to reload.</li>
+        </ul>
+    </div>
+
+    <!-- Manual Start/Stop Simulation Script -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+    
+    <!-- Simulation Control -->
+    <div style="position:fixed; bottom:20px; right:20px; z-index:10000;">
+        <button id="manual-start-btn" style="padding:15px 30px; background:#ff003c; color:white; border:none; font-family:'Courier New', monospace; font-weight:bold; cursor:pointer; box-shadow:0 0 10px #000;">ENABLE SIMULATION MODE</button>
+    </div>
+
+</body>
+</html>

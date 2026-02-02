@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scenario: Doomsday Clock</title>
+    <link rel="stylesheet" href="../css/page_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <style>
+        .countdown-arena {
+            position: relative;
+            background: #110505;
+            border: 2px solid #ff003c;
+            padding: 20px;
+            color: #ff003c;
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .big-timer {
+            font-family: 'Black Ops One', cursive;
+            font-size: 15vh;
+            color: #ff003c;
+            text-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+            margin: 0;
+            animation: pulse-red 1s infinite;
+        }
+
+        .grid-panels {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .panel {
+            border: 1px solid #441111;
+            background: rgba(40, 0, 0, 0.3);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .panel h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #fff;
+            border-bottom: 1px solid #ff003c;
+            padding-bottom: 5px;
+        }
+
+        .cancel-btn {
+            background: #ff003c;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-family: 'Press Start 2P';
+            font-size: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            box-shadow: 0 0 10px #ff003c;
+            animation: glitch-anim 3s infinite;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #220000;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff003c,
+                #ff003c 10px,
+                #990024 10px,
+                #990024 20px
+            );
+            width: 80%;
+            animation: fillUp 5s infinite alternate;
+        }
+
+        .boss-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        @keyframes pulse-red {
+            0% { text-shadow: 0 0 20px rgba(255, 0, 60, 0.5); transform: scale(1); }
+            50% { text-shadow: 0 0 40px rgba(255, 0, 60, 1); transform: scale(1.05); }
+            100% { text-shadow: 0 0 20px rgba(255, 0, 60, 0.5); transform: scale(1); }
+        }
+
+        @keyframes fillUp {
+            0% { width: 10%; }
+            100% { width: 100%; }
+        }
+
+        .hazard-stripe {
+            height: 10px;
+            width: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                #000,
+                #000 20px,
+                #ffcc00 20px,
+                #ffcc00 40px
+            );
+            margin: 5px 0;
+        }
+
+        .code-block {
+            font-family: monospace;
+            color: #0f0;
+            font-size: 12px;
+            text-align: left;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="margin-bottom: 20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>SCENARIO: <span style="color:#ff003c">TIMELINE COLLAPSE</span></h2>
+                
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <div style="font-size:12px; color:#aaa;">TIME LIMIT (SEC):</div>
+                    <input type="number" id="sim-time-input" value="60" min="10" max="300" style="background:#220; color:#fff; border:1px solid #ff003c; padding:5px; font-family:'Press Start 2P'; width:60px;">
+                    <button id="manual-start-btn" class="cta-button" style="padding:10px 20px; font-size:12px;" data-mode="timed">ENABLE SIMULATION</button>
+                </div>
+            </div>
+            <a href="scenario_hub.html" style="color:#666; font-size:12px;">&larr; BACK TO MISSION SELECT</a>
+        </header>
+
+        <p>Mission: Prevent the system meltdown. Destroy all timers and protocols before execution.</p>
+
+        <div class="countdown-arena">
+            <h1 class="big-timer wb-enemy">00:01</h1>
+            <div class="hazard-stripe"></div>
+            
+            <div class="grid-panels">
+                <div class="panel">
+                    <h3>PROTOCOL A</h3>
+                    <div class="code-block">
+                        > INITIALIZING...<br>
+                        > BYPASS FAILED<br>
+                        > RETRYING
+                    </div>
+                    <div class="progress-bar wb-enemy"><div class="progress-fill"></div></div>
+                    <button class="cancel-btn wb-enemy">ABORT</button>
+                </div>
+                
+                <div class="panel">
+                    <h3>SYSTEM CORE</h3>
+                    <div style="font-size: 40px; color:#ff003c; margin: 10px 0;" class="wb-enemy">ERROR</div>
+                    <button class="cancel-btn wb-enemy">REBOOT</button>
+                </div>
+
+                <div class="panel">
+                    <h3>PROTOCOL B</h3>
+                    <div class="code-block">
+                        > UPLOADING VIRUS<br>
+                        > [||||||||||] 99%
+                    </div>
+                    <div class="progress-bar wb-enemy"><div class="progress-fill" style="animation-duration: 2s; background: #00ff00;"></div></div>
+                    <button class="cancel-btn wb-enemy">PURGE</button>
+                </div>
+            </div>
+
+            <div class="boss-container">
+                <div class="wb-enemy wb-boss" style="background:#ff003c; color:white; padding:20px 40px; font-family:'Black Ops One'; font-size:30px; border: 4px solid white; display:inline-block; cursor:pointer;" data-wb-health="50">
+                    DOOMSDAY DEVICE
+                </div>
+                <div style="margin-top:10px; color:#666;">(HIGH DURABILITY TARGET)</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Simulation Dependencies -->
+    <script src="../js/standalone_game.js"></script>
+    <script src="../js/training_ui.js"></script>
+</body>
+</html>

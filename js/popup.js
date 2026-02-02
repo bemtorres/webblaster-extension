@@ -2,6 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('toggleBtn');
   const statusText = document.querySelector('.status-text');
   const container = document.querySelector('.container');
+  const modeOptions = document.querySelectorAll('.mode-option');
+  const timerSettings = document.getElementById('timer-settings');
+  const timeMin = document.getElementById('time-min');
+  const timeSec = document.getElementById('time-sec');
+
+  let currentMode = 'free';
+
+  // Mode Selection Logic
+  modeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      modeOptions.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      currentMode = opt.dataset.mode;
+
+      if (currentMode === 'timed') {
+        timerSettings.classList.remove('hidden');
+      } else {
+        timerSettings.classList.add('hidden');
+      }
+    });
+  });
 
   // Query active tab
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -24,12 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     btn.addEventListener('click', () => {
+      // Get settings
+      const min = parseInt(timeMin.value) || 0;
+      const sec = parseInt(timeSec.value) || 0;
+      const totalSeconds = (min * 60) + sec;
+
+      const config = {
+        mode: currentMode,
+        timeLimit: totalSeconds > 0 ? totalSeconds : 60 // Default 60s if invalid
+      };
+
       chrome.scripting.executeScript({
         target: { tabId: tabId },
         files: ['js/content.js']
       }, () => {
         // After injection (if not already there), send toggle
-        chrome.tabs.sendMessage(tabId, { action: "TOGGLE_GAME" }, (response) => {
+        chrome.tabs.sendMessage(tabId, {
+          action: "TOGGLE_GAME",
+          config: config
+        }, (response) => {
           if (response) {
             setUIActive(response.isActive);
           }

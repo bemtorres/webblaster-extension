@@ -24,7 +24,18 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["css/game.css", "sounds/shot_fx.mp3", "sounds/PixelSkyway.mp3"],
+      "resources": [
+        "css/game.css", 
+        "sounds/shot_fx.mp3", 
+        "sounds/PixelSkyway.mp3",
+        "sounds/fx_boos.mp3",
+        "sounds/fx_explosion.mp3",
+        "sounds/fx_1_one.mp3",
+        "sounds/fx_2_two.mp3",
+        "sounds/fx_3_three.mp3",
+        "sounds/fx_4_go.mp3",
+        "sounds/FinalCoreMeltdown.mp3"
+      ],
       "matches": ["<all_urls>"]
     }
   ]

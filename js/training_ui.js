@@ -12,8 +12,20 @@ function toggleSim() {
     return;
   }
 
-  const isActive = window.toggleStandaloneGame();
   const btn = document.getElementById('manual-start-btn');
+  const mode = btn.dataset.mode || 'free';
+
+  // Try to find input first, fallback to dataset
+  const inputEl = document.getElementById('sim-time-input');
+  let timeLimit = 60;
+
+  if (inputEl) {
+    timeLimit = parseInt(inputEl.value) || 60;
+  } else {
+    timeLimit = parseInt(btn.dataset.timeLimit) || 60;
+  }
+
+  const isActive = window.toggleStandaloneGame({ mode, timeLimit });
 
   if (isActive) {
     btn.innerText = "DISABLE SIMULATION";

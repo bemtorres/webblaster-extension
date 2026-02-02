@@ -35,5 +35,15 @@ The Extension does not integrate with any third-party services, ad networks, or 
 ## 5. Contact
 If you have any questions about this Privacy Policy, please contact the developer via the GitHub repository: https://github.com/bemtorres
 
+
+## 6. Children's Privacy
+The Extension is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13.
+
+## 7. Changes to This Privacy Policy
+We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page.
+
+## 8. Compliance
+This privacy policy is designed to comply with the Chrome Web Store Developer Program Policies regarding User Data Privacy.
+
 ---
 **Disclaimer:** This Extension is a game designed for entertainment. It modifies the visual presentation of webpages locally. It does not permanently delete content from the internet or affect the actual websites you visit for other users.

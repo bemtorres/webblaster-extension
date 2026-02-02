@@ -9,27 +9,63 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="logo">WEB<span class="highlight">BLASTER</span></h1>
+    <div class="scanline"></div>
     
-    <div class="status-indicator">
-      <span class="status-dot"></span>
-      <span class="status-text">SYSTEM READY</span>
-    </div>
+    <header>
+      <h1 class="logo">WEB<span class="highlight">BLASTER</span></h1>
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">SYSTEM READY</span>
+      </div>
+    </header>
 
-    <button id="toggleBtn" class="cybr-btn">
-      START GAME<span aria-hidden>_</span>
-      <span aria-hidden class="cybr-btn__glitch">START_GAME</span>
-      <span aria-hidden class="cybr-btn__tag">R25</span>
-    </button>
-    
-    <div class="instructions">
-      <p>CLICK ELEMENTS TO DESTROY</p>
-      <p>BUILD COMBOS FOR MAX XP</p>
-    </div>
+    <main>
+      <div class="panel-box">
+        <div class="panel-header">MODE SELECT</div>
+        <div class="mode-selector">
+          <div class="mode-option selected" data-mode="free">
+            <span class="icon">∞</span> FREE STYLE
+          </div>
+          <div class="mode-option" data-mode="timed">
+            <span class="icon">⏱</span> TIMED RUN
+          </div>
+        </div>
+      </div>
 
-    <div class="credits">
-      Created by <a href="https://github.com/bemtorres" target="_blank">bemtorres</a>
-    </div>
+      <div id="timer-settings" class="panel-box hidden">
+        <div class="panel-header">TIME LIMIT</div>
+        <div class="timer-inputs">
+          <div class="timer-control">
+            <input type="number" id="time-min" value="1" min="0" max="10">
+            <label>MIN</label>
+          </div>
+          <span class="separator">:</span>
+          <div class="timer-control">
+            <input type="number" id="time-sec" value="00" min="0" max="59">
+            <label>SEC</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-area">
+        <button id="toggleBtn" class="cybr-btn">
+          START_GAME<span aria-hidden>_</span>
+          <span aria-hidden class="cybr-btn__glitch">START_GAME</span>
+          <span aria-hidden class="cybr-btn__tag">R25</span>
+        </button>
+      </div>
+
+      <div class="instructions">
+        <div class="inst-row"><span>[CLICK]</span> DESTROY</div>
+        <div class="inst-row"><span>[SHIFT+CLICK]</span> NUKE</div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="credits">
+        DEV: <a href="https://github.com/bemtorres" target="_blank">bemtorres</a>
+      </div>
+    </footer>
   </div>
   <script src="js/popup.js"></script>
 </body>

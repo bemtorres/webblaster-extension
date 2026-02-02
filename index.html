@@ -127,6 +127,160 @@
             0% { transform: translateX(100vw); }
             100% { transform: translateX(-100%); }
         }
+        /* Merch Store Styles */
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .merch-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .merch-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .merch-card::after {
+            content: "SOLD OUT";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #ff003c;
+            color: #fff;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-family: 'Press Start 2P';
+            font-size: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            opacity: 0.9;
+        }
+        .merch-img-box {
+            height: 180px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #333;
+            font-size: 50px;
+            filter: grayscale(100%);
+        }
+        .merch-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .merch-info h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            color: #eee;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .merch-info p {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        .goods-price {
+            font-family: 'Press Start 2P';
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .sold-out-btn {
+            background: #222;
+            color: #555;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            font-family: 'Press Start 2P';
+            font-size: 10px;
+            cursor: not-allowed;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Spotify-style Player */
+        .music-player-container {
+            background: linear-gradient(180deg, #222 0%, #121212 100%);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #333;
+        }
+        .track-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .track-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: #fff;
+        }
+        .track-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .track-item.active {
+            color: var(--primary);
+        }
+        .track-num {
+            color: #888;
+            font-size: 14px;
+            margin-right: 15px;
+            width: 20px;
+        }
+        .track-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .track-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .track-artist {
+            font-size: 12px;
+            color: #b3b3b3;
+        }
+        .track-duration {
+            color: #b3b3b3;
+            font-size: 13px;
+        }
+        .play-icon {
+            display: none;
+            width: 16px; 
+            height: 16px;
+            fill: currentColor;
+            margin-right: 15px;
+        }
+        .track-item:hover .track-num { display: none; }
+        .track-item:hover .play-icon { display: block; }
+        .track-item.playing .track-num { display: none; }
+        .track-item.playing .play-icon { display: block; }
+        
+        .now-playing-bar {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -146,7 +300,7 @@
             
             <p class="hero-desc">
                 The ultimate browser extension that turns every webpage into a destructible playground. 
-                <br><br>
+                <br>
                 <span style="color:var(--secondary)">DELETE. SCORE. DOMINATE.</span>
             </p>
 
@@ -172,6 +326,166 @@
                 <a href="welcome.html" class="secondary-btn">DOCS</a>
             </div>
         </section>
+
+
+
+        <!-- SOUNDTRACK SECTION -->
+        <section class="soundtrack-section" style="margin-top: 60px;">
+             <div class="glitch-wrapper" style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-family: 'Press Start 2P'; font-size: 20px; color: #fff;">OFFICIAL <span style="color:var(--primary)">SOUNDTRACK</span></h2>
+            </div>
+            
+            <div class="music-player-container">
+                <div style="display:flex; align-items:center; margin-bottom:20px;">
+                    <img src="images/WEBBLASTER.png" style="width:60px; height:60px; margin-right:15px; border-radius:4px;">
+                    <div>
+                        <div style="font-size:12px; color:#b3b3b3;">PLAYLIST</div>
+                        <h1 style="margin:0; font-size:24px; font-weight:700;">WebBlaster OST</h1>
+                        <div style="font-size:12px; color:#b3b3b3; margin-top:5px;">Original Game Audio • 2026</div>
+                    </div>
+                </div>
+
+                <ul class="track-list">
+                    <li class="track-item" onclick="playTrack('sounds/PixelSkyway.mp3', this)">
+                        <span class="track-num">1</span>
+                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="track-info">
+                            <span class="track-title">Pixel Skyway (Free Mode)</span>
+                            <span class="track-artist">WebBlaster Audio</span>
+                        </div>
+                        <span class="track-duration">2:15</span>
+                    </li>
+                    <li class="track-item" onclick="playTrack('sounds/FinalCoreMeltdown.mp3', this)">
+                        <span class="track-num">2</span>
+                        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="track-info">
+                            <span class="track-title">Final Core Meltdown (Timed Mode)</span>
+                            <span class="track-artist">WebBlaster Audio</span>
+                        </div>
+                        <span class="track-duration">3:42</span>
+                    </li>
+                </ul>
+
+                <div class="now-playing-bar">
+                    <div id="np-title">Select a track...</div>
+                    <div id="np-status" style="color:var(--primary)">PAUSED</div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            let currentAudio = null;
+            let currentItem = null;
+
+            function playTrack(src, item) {
+                if (currentAudio && currentAudio.src.includes(src)) {
+                    // Toggle Play/Pause
+                    if (currentAudio.paused) {
+                        currentAudio.play();
+                        item.classList.add('playing');
+                        document.getElementById('np-status').innerText = "PLAYING NOW";
+                    } else {
+                        currentAudio.pause();
+                        item.classList.remove('playing');
+                        document.getElementById('np-status').innerText = "PAUSED";
+                    }
+                    return;
+                }
+
+                if (currentAudio) {
+                    currentAudio.pause();
+                    if (currentItem) currentItem.classList.remove('playing');
+                }
+
+                currentAudio = new Audio(src);
+                currentAudio.volume = 0.5;
+                currentAudio.play();
+                
+                currentItem = item;
+                // Reset all
+                document.querySelectorAll('.track-item').forEach(el => el.classList.remove('playing', 'active'));
+                
+                item.classList.add('playing', 'active');
+                
+                const title = item.querySelector('.track-title').innerText;
+                document.getElementById('np-title').innerText = title;
+                document.getElementById('np-status').innerText = "PLAYING NOW";
+
+                currentAudio.onended = () => {
+                   item.classList.remove('playing');
+                   document.getElementById('np-status').innerText = "FINISHED";
+                };
+            }
+        </script>
+
+        <!-- MERCH STORE SECTION -->
+        <section class="merch-section" style="margin-top: 80px; margin-bottom: 40px; border-top: 1px dashed #333; padding-top: 40px;">
+             <div class="glitch-wrapper" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-family: 'Press Start 2P'; font-size: 24px; color: #fff;">OFFICIAL <span style="color:var(--secondary)">LOOT</span></h2>
+                <div style="width: 100px; height: 4px; background: var(--secondary); margin: 10px auto;"></div>
+            </div>
+
+
+            <div class="merch-grid">
+                <!-- Item 1: Cap (product_1.png) -->
+                <div class="merch-card">
+                    <div class="merch-img-box">
+                        <img src="images/product_1.png" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+                    <div class="merch-info">
+                        <h3>OPERATOR CAP</h3>
+                        <p>Embroidered logo. Snapback.</p>
+                        <div class="goods-price">$24.99</div>
+                        <button class="sold-out-btn" disabled>OUT OF STOCK</button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Hoodie (product_2.png) -->
+                <div class="merch-card">
+                    <div class="merch-img-box">
+                        <img src="images/product_2.png" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+                    <div class="merch-info">
+                        <h3>NETRUNNER HOODIE</h3>
+                        <p>Black/Yellow. Heavy cotton.</p>
+                        <div class="goods-price">$59.99</div>
+                        <button class="sold-out-btn" disabled>OUT OF STOCK</button>
+                    </div>
+                </div>
+
+                 <!-- Item 3: Mug (product_3.png) -->
+                <div class="merch-card">
+                    <div class="merch-img-box">
+                       <img src="images/product_3.png" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+                    <div class="merch-info">
+                        <h3>FUEL MUG</h3>
+                        <p>Ceramic. Thermo-reactive.</p>
+                        <div class="goods-price">$14.99</div>
+                        <button class="sold-out-btn" disabled>OUT OF STOCK</button>
+                    </div>
+                </div>
+
+                 <!-- Item 4: Backpack (product_4.png) -->
+                <div class="merch-card">
+                    <div class="merch-img-box">
+                        <img src="images/product_4.png" style="width:100%; height:100%; object-fit:contain;">
+                    </div>
+                    <div class="merch-info">
+                        <h3>TACTICAL PACK</h3>
+                        <p>Water-resistant. Utility pockets.</p>
+                        <div class="goods-price">$49.99</div>
+                        <button class="sold-out-btn" disabled>OUT OF STOCK</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 20px; text-align: center; font-size: 12px; color: #666;">
+            <a href="PRIVACY_POLICY.md" target="_blank" style="color: #666; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+            <a href="https://github.com/bemtorres" target="_blank" style="color: #666; text-decoration: none; margin: 0 10px;">GitHub</a> |
+            <span>v1.0.0</span>
+        </div>
     </div>
 
     <div class="feature-ticker">
